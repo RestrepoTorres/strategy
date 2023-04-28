@@ -8,5 +8,17 @@ public class Context {
     public void ejecutar(){
         this.estrategia.mostrarRuta();
     }
+    public void cambiarEstrategia(TiposDeVehiculos estrategia){
+        if(estrategia == TiposDeVehiculos.BicicletaStrategy){
+            this.estrategia = new BicicletaStrategy();
+        }
+        if(estrategia == TiposDeVehiculos.CarroStrategy){
+            this.estrategia = new CarroStrategy();
+        }
+        if(estrategia == TiposDeVehiculos.TransportePublicoStrategy){
+            this.estrategia = new TransportePublicoStrategy();
+        }
+
+    }
 
 }
