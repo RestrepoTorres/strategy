@@ -1,3 +1,5 @@
+import java.util.Map;
+import java.util.HashMap;
 
 public class Context {
     private Istrategy estrategia;
@@ -9,15 +11,11 @@ public class Context {
         this.estrategia.mostrarRuta();
     }
     public void cambiarEstrategia(TiposDeVehiculos estrategia){
-        if(estrategia == TiposDeVehiculos.BicicletaStrategy){
-            this.estrategia = new BicicletaStrategy();
-        }
-        if(estrategia == TiposDeVehiculos.CarroStrategy){
-            this.estrategia = new CarroStrategy();
-        }
-        if(estrategia == TiposDeVehiculos.TransportePublicoStrategy){
-            this.estrategia = new TransportePublicoStrategy();
-        }
+       Map <TiposDeVehiculos, Istrategy> estrategias = new HashMap<>();
+        estrategias.put(TiposDeVehiculos.BicicletaStrategy, new BicicletaStrategy());
+        estrategias.put(TiposDeVehiculos.CarroStrategy, new CarroStrategy());
+        estrategias.put(TiposDeVehiculos.TransportePublicoStrategy, new TransportePublicoStrategy());
+        this.estrategia = estrategias.get(estrategia);
 
     }
 
